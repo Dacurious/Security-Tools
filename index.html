@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="keywords" content="wireshark, packet, analyzer">
+    <meta name="Wireshark is a free, open-source packet analyzer"> 
+    <title>Packet Analyzer</title>
+</head>
+<body>
+    <header>
+           
+
+        <strong>WIRESHARK</strong>
+            
+    </header>
+       <p>
+           Wireshark is a free, open-source packet analyzer. It captures network traffic on the local network and stores that data for offline analysis. 
+       </p>
+                
+       <p>Its primary usage is for network troubleshooting, analysis, software and communications protocol development, as well as education.</p>
+       <p> Wireshark is the most often-used packet sniffer in the world. Like any other packet sniffer, Wireshark does three things:</p>
+         
+       <ul>
+            <li> Packet Capture: Wireshark listens to a network connection in real time and then grabs entire streams of traffic – quite possibly tens of thousands of packets at a time.</li>
+            <li> Filtering: Wireshark is capable of slicing and dicing all of this random live data using filters. By applying a filter, you can obtain just the information you need to see.</li>
+            <li> Visualization: Wireshark, like any good packet sniffer, allows you to dive right into the very middle of a network packet. It also allows you to visualize entire conversations and network streams.</li>
+       </ul>
+
+Some of the features of Wireshark include:
+       <ol>
+	        <li>Data can be captured 'from the wire' from a live network connection or read from a file of captured packets.</li>
+	        <li>Live data can be read from different types of networks, including Ethernet, IEEE 802.11, PPP, and LoopBack.</li>
+	        <li>Data display can be refined using a display filter.</li> 
+	        <li>Plugins can be created for dissecting new protocols.</li>
+	        <li>VoIP calls in the captured traffic can be detected. If encoded in a compatible encoding, the media flow can even be  played.</li>
+	        <li>Raw USB traffic can be captured.</li>
+            <li>Various settings, timers and filters can be set to filter the output of the captured traffic.</li>
+       </ol>
+             <br>
+            <strong>Capturing Live Packets using Wireshark</strong>
+
+<p>Open Wireshark</p>
+
+
+<img src="Assets/Screenshot_1.png" alt="My Sample Image">
+
+<ul>
+    <li>It will bring Capture interface window. It will list all available interfaces.</li>
+    <li>Select eth0</li>
+</ul>
+
+<img src="Assets/Screenshot_2.png" alt="My Sample Image">
+<br>
+
+<p>Click on start button to begin your capture</p>
+
+<img src="Assets/Screenshot_3.png" alt="My Sample Image">
+
+
+<p>Open your browser and visit any website, e.g facebook.com</p>
+
+<img src="Assets/Screenshot_4.png" alt="My Sample Image">
+
+
+<p>Stop the capturing by clicking on the red button</p>
+
+<img src="Assets/Screenshot_5.png" alt="My Sample Image">
+
+
+
+<p>Go to display filter and search for Facebook.</p>
+
+<img src="Assets/Screenshot_6.png" alt="My Sample Image">
+<br>
+
+<br>
+<strong>Anayzing Packet with wireshark</strong>
+
+<p>You can download free pcap files online</p>
+
+<a href="https://tcpreplay.appneta.com/wiki/captures.html" target="_blank">PCAP File Download</a>
+
+<p>SmallFlows.pcap file will be used for analysis purpose. Open wireshark, click on file then go to open file.</p>
+
+<p>Then locate the file path and open it</p>
+<img src="Assets/Screenshot_7.png" alt="My Sample Image">
+<br>
+<p>Once it opens, the captured packets is represented in three different windows. The total number of the packet captured is displayed at the bottom (14261)</p>
+<img src="Assets/Screenshot_8.png" alt="My Sample Image">
+<br>
+<p>The first window shows the packet number, time, source IP addr, Destination IP addr, protocol, length of data and information.</p>
+<br>
+<img src="Assets/Screenshot_9.png" alt="My Sample Image">
+<br>
+<p>The second windows display the selected packet frameworks and its protocol</p>
+    <p>Each frame can be expanded by clicking on > to show more details about the selected packet.</p>
+<img src="Assets/Screenshot_10.png" alt="My Sample Image">
+<br>
+<p>Click on > Hypertext Transfer Protocol. More details about the HTTP of the selected packet will be displayed
+</p>
+<img src="Assets/Screenshot_11.png" alt="My Sample Image">
+<br>
+<br>
+<img src="Assets/Screenshot_12.png" alt="My Sample Image">
+<br>
+<p>The third window show the hex of the selected packet which is segmented into 4 columns.
+</p>
+<img src="Assets/Screenshot_13.png" alt="My Sample Image">
+<br>
+<p>Clicking on any of the hex, it will display the corresponding data on the fourth column.
+</p>
+<img src="Assets/Screenshot_14.png" alt="My Sample Image">
+<br>
+<br>
+<strong>Filtering</strong>
+<br>
+<p>Filtering can help you search for specific packets. Wireshark provides a simple display filter language which allows the creation of filter expressions.</P> 
+<p>Every field in the packet details pane can be used as a filter string; for example, the filter ‘DNS’ will show all the packets containing the DNS protocol.</p> 
+<p> Operators such as == and && can be used to compare and combine expressions.</p>
+    
+
+<p>For example, a display filter to show SNMP (port 161) and ICMP traffic would look like this:
+</p>
+<ol>
+    <li>tcp.port eq 161 or ICMP</li>
+    <li>ip.addr - Specifies an IPv4 address</li>
+    <li>ipv6.addr - Specifies an IPv6 address</li>
+    <li>src Source - where the packet came from</li>
+    <li>dst Destination - where the packet is going</li>
+    <li>&&/and - Means “and,” as in, “Choose the IP address of 192.168.2.1 and 192.168.2.2”</li>
+    <li>==/eq  - Means “equals,” as in “Choose only IP address 192.168.2.1”</li>
+    <li>!/ne - Means “not,” as in, do not show a particular IP address or source port</li>
+    <li>||/or -Means "or" </li>
+</ol>
+<p>For example, a display filter to show IP addr 72.14.213.102 and HTTP traffic would look like this:
+    ip.addr == 72.14.213.102 && http
+   </p>
+<p>From the result, there is just 2 packets matching the filter expression.
+</p>
+
+<img src="Assets/Screenshot_15.png" alt="My Sample Image">
+<br>
+<br>
+
+<strong><em>Additional filters:
+</em></strong>
+
+<ul>
+    <li>tcp.port==8080 - Filters packets to show a port of your own choosing – in this case, port 8080
+    </li>
+    <li>!(ip.src == 162.248.16.53) - Shows all packets except those originating from 162.248.16.53
+    </li>
+    <li>ip.addr == 192.168.4.1 && ip.addr == 192.168.4.2 - Shows both 192.168.4.1 and 192.168.4.2
+    </li>
+    <li>http.request - Shows only http requests – useful when troubleshooting or visualizing web traffic
+    </li>
+
+</ul>
+
+<strong><em>Using display filter to search for strings
+</em></strong>
+<p>Click on search
+</p>
+
+<img src="Assets/Screenshot_16.png" alt="My Sample Image">
+
+<p>It will display a filter
+</p>
+
+<img src="Assets/Screenshot_17.png" alt="My Sample Image">
+
+<p>Change the display filter to strings in order to search for a string
+    Search for string "skype"
+    </p>
+    <img src="Assets/Screenshot_18.png" alt="My Sample Image">
+<br>
+<br>
+
+<strong>Streams</strong>
+
+<p>it is often useful to view the network the way it is seen in the application layer.</p> 
+<p>The most common stream type is TCP, but Wireshark also recognizes application types such as HTTP, UDP, and TLS, which can assemble these streams into a single view. 
+</p>
+<p>A data stream can be viewed and extracted directly from the packet view in Wireshark by right clicking on the desired packet</p>  
+<p> > Follow <protocol> Stream. By doing this, an ASCII interpretation of the raw file is presented alongside the option to save the raw file to disk.
+</p>
+<img src="Assets/Screenshot_19.png" alt="My Sample Image">
+<br>
+<br>
+<strong>Exporting Objects
+</strong>
+
+<p>Wireshark provides a variety of options for exporting the packet data. These ‘objects’ are files which can be reconstructed from HTTP and SMB streams. 
+</p>
+<p>To extract objects from the packet capture, go to File > Export Objects and select the object type from the list.</p>
+<p>>In the new window select the file to extract and click ‘Save’; alternatively, you can hit ‘Save All’ if you wish to extract all objects of that type.
+</p>
+
+<img src="Assets/Screenshot_20.png" alt="My Sample Image">
+<br>
+
+<p>Select the directory to save the image file. You can rename the image.
+Then hit save.</p>
+<img src="Assets/Screenshot_21.png" alt="My Sample Image">
+
+<p>The image file is saved in the download directory
+</p>
+
+<img src="Assets/Screenshot_22.png" alt="My Sample Image">
+
+<p>The view of the image file
+</p>
+<img src="Assets/Screenshot_23.png" alt="My Sample Image">
+<p>Exporting objects is beneficial from a cyber defense analyst's perspective because it allows them to recover artefacts from the network capture for closer examination. 
+</p>
+<p>Inspection of these artefacts can lead to important discoveries about the assembled evidence needed for an investigation.
+</p>
+
+
+<strong>Statistics Tab</strong>
+
+<p>It gives the visualization of the packets in form of graph, tabular form etc.
+    It’s also possible to capture the amount of traffic generated between one system and another.</p>
+
+<em>Conversation</em> 
+<p>It shows the summary of conversations between endpoints.
+    If you go to Statistics and then select Conversations
+    </p>
+    <img src="Assets/Screenshot_24.png" alt="My Sample Image">
+<br>
+
+<p>Click on IPv4 
+</p>
+<img src="Assets/Screenshot_25.png" alt="My Sample Image">
+<br>
+<br>
+
+<img src="Assets/Screenshot_26.png" alt="My Sample Image">
+
+<p>For detailed information of the conversation between the two endpoints, right click on the conversation 
+    And select Apply as Filter > Selected > A<->B
+    </p>
+<img src="Assets/Screenshot_27.png" alt="My Sample Image">
+<br>
+<br>
+<img src="Assets/Screenshot_28.png" alt="My Sample Image">
+
+<p><em>As we can see, we can analyze the packets between endpoints on a local network to understand the communication between them. Wireshark is a powerful application.</em>
+</p>
+
+
+
+</body>
+</html>
